@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+angular-with-firebase-2ae01-firebase-adminsdk-62ab1-d890ac96c3.json
 
 # System Files
 .DS_Store

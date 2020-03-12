@@ -1,0 +1,115 @@
+<div *ngIf="item$ | async as userProfile">
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <div class="content-wrapper">
+    <div class="image-wrapper">
+      <div *ngIf="downloadUrl$ | async as srcUrl">
+        <img [src]="srcUrl" alt="profile image" class="image" />
+      </div>
+      <div *ngIf="!(downloadUrl$ | async)">
+        <img
+          src="assets/profile-placeholder.png"
+          alt="profile image"
+          class="image"
+        />
+      </div>
+      <input
+        type="file"
+        #fileInput
+        (change)="fileChange($event)"
+        accept=".png,.jpg"
+        class="file-input"
+      />
+      <progress max="100" [value]="uploadProgress$ | async"></progress>
+      <button mat-raised-button (click)="fileInput.click()">
+        Upload photo
+      </button>
+    </div>
+    <div class="form-wrapper">
+      <form [formGroup]="formGroup" (submit)="onSubmit()" class="profile-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="name"
+            placeholder="Name"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="address"
+            placeholder="Address"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="city"
+            placeholder="City"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="state"
+            placeholder="State"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Zip</mat-label>
+          <input matInput type="text" formControlName="zip" placeholder="Zip" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="phone"
+            placeholder="Phone"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Specialty</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="specialty"
+            placeholder="Specialty"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>IP</mat-label>
+          <input matInput type="text" formControlName="ip" placeholder="IP" />
+        </mat-form-field>
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!formGroup.valid"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

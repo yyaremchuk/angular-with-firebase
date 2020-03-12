@@ -1,0 +1,12 @@
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /users/{userId}/{fileName} {
+      allow read, write: if request.auth.uid == userId || request.auth.token.admin === true;
+    }
+
+    match /{imageId} {
+      allow write: if request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*')
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+
+  .image-wrapper {
+    display: flex;
+    flex: 0 0 30%;
+    flex-direction: column;
+    margin-right: 10px;
+
+    .image {
+      width: 300px;
+      height: auto;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 70%;
+
+    mat-form-field {
+      padding-left: 5px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<div class="form-wrapper">
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <form [formGroup]="formGroup" (submit)="onSubmit()" class="login-form">
+    <div *ngIf="isSignUp()" class="details">
+      <mat-form-field appearance="fill">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </mat-form-field>
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!formGroup.valid"
+      >
+        {{ action | uppercase }}
+      </button>
+      <span *ngIf="isLogin()">
+        or
+        <a href="#" (click)="action = 'signup'">Sign Up</a>
+      </span>
+      <span *ngIf="isSignUp()">
+        or
+        <a href="#" (click)="action = 'login'">Login</a>
+      </span>
+    </div>
+  </form>
+</div>

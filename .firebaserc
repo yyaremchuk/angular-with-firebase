@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-with-firebase-2ae01": {
+      "hosting": {
+        "angular-with-firebase": [
+          "angular-with-firebase-2ae01"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-with-firebase-2ae01"
+  }
+}
